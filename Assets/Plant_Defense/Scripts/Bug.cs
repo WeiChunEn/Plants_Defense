@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(NavMeshAgent))]
 
 public class Bug : MonoBehaviour
 {
-
+   
     [Header("方便觀看")]
     public string _sBug_Name;
     public float _fBug_Speed;
@@ -145,4 +146,5 @@ public class Bug : MonoBehaviour
 
         }
     }
+    
 }
