@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     public int _iDamage;
     public float _fRange;
     public float _fFireRate;
+    private float _fNext_Fire;
     public int _iMaxAmmo;
     public int _iCurrentAmmo;
     public float _fReloadTime;
@@ -27,7 +28,7 @@ public class Weapon : MonoBehaviour
         transform.localRotation = Quaternion.identity;
         _iDamage = 10;
         _fRange = 100f;
-        _fFireRate = 50f;
+        _fFireRate = 0.2f;
         _iMaxAmmo = 20;
         _fReloadTime = 3f;
         _bIsReloading = false;
@@ -44,12 +45,14 @@ public class Weapon : MonoBehaviour
         _wLaser.transform.position = _tFire_Pos.position;
         _wLaser.transform.rotation = _tFire_Pos.rotation;
 
-        if (_TriggerInput.GetStateDown(_InputSource))
+        if (_TriggerInput.GetStateDown(_InputSource) && Time.time > _fNext_Fire)
         {
+            _fNext_Fire = Time.time + _fFireRate;
             Shoot();
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && Time.time > _fNext_Fire)
         {
+            _fNext_Fire = Time.time + _fFireRate;
             Shoot();
         }
         Ray _Ray = new Ray(_tFire_Pos.position, _tFire_Pos.forward);
@@ -60,7 +63,7 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
-        Instantiate(_gAmmo,_tFire_Pos.position,_gAmmo.transform.rotation);
+        Instantiate(_gAmmo, _tFire_Pos.position, _tFire_Pos.transform.rotation);
     }
 
     void SetLaserDotPosition(RaycastHit hit)

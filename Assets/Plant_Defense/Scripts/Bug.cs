@@ -95,7 +95,7 @@ public class Bug : MonoBehaviour
     {
         
         navMeshAgent = GetComponent<NavMeshAgent>();
-        _gTarget = GameObject.Find("Player");
+        _gTarget = GameObject.Find("End");
        
     }
 
@@ -125,9 +125,9 @@ public class Bug : MonoBehaviour
         {
            
             case "Bee(Clone)":
-                print(123);
+                
                 _sBug_Name = "Bee";
-                _iBug_HP = 5;
+                _iBug_HP = 50;
                 _fBug_Speed = 5.0f;
                 navMeshAgent.speed = _fBug_Speed;
                 _iBug_Money = 5;
@@ -135,7 +135,7 @@ public class Bug : MonoBehaviour
                 break;
             case "Ant(Clone)":
                 _sBug_Name = "Ant";
-                _iBug_HP = 3;
+                _iBug_HP = 30;
                 _fBug_Speed = 3.0f;
                 navMeshAgent.speed = _fBug_Speed;
                 _iBug_Money = 3;
@@ -144,6 +144,15 @@ public class Bug : MonoBehaviour
 
 
 
+        }
+    }
+
+    public void Set_Damage(int _iDamage)
+    {
+        Insect.Bug_HP -= _iDamage;
+        if(Insect.Bug_HP<=0)
+        {
+            Destroy(gameObject);
         }
     }
     
