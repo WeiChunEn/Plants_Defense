@@ -16,6 +16,7 @@ public class Bug : MonoBehaviour
     public int _iBug_HP;
     public int _iBug_Money;
     public Slider _sBug_HP;
+    public GameObject _gPlayer;
     public GameObject _gTarget;
 
     public class Bug_Data
@@ -95,7 +96,8 @@ public class Bug : MonoBehaviour
     {
         
         navMeshAgent = GetComponent<NavMeshAgent>();
-        _gTarget = GameObject.Find("End");
+        _gPlayer = GameObject.Find("Player");
+        _gTarget = GameObject.Find("Player");
        
     }
 
@@ -110,6 +112,7 @@ public class Bug : MonoBehaviour
         Debug();
         
         navMeshAgent.SetDestination(_gTarget.transform.position);
+        
     }
 
     public void Debug()
@@ -141,6 +144,14 @@ public class Bug : MonoBehaviour
                 _iBug_Money = 3;
                 Insect = new Set_Bug(_sBug_Name, _iBug_HP, _fBug_Speed, _iBug_Money);
                 break;
+            case "Smokey(Clone)":
+                _sBug_Name = "Smokey";
+                _iBug_HP = 80;
+                _fBug_Speed = 10.0f;
+                navMeshAgent.speed = _fBug_Speed;
+                _iBug_Money = 10;
+                Insect = new Set_Bug(_sBug_Name, _iBug_HP, _fBug_Speed, _iBug_Money);
+                break;
 
 
 
@@ -155,5 +166,18 @@ public class Bug : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "Damage_Area")
+        {
+            _gPlayer.transform.GetChild(0).GetComponent<CameraShake>().shakeDuration = 0.5f;
+            Destroy(gameObject);
+        }
+
+        if(other.name == "Player_Area")
+        {
+            _gTarget = GameObject.Find("End");
+        }
+    }
+
 }

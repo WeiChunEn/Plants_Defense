@@ -43,7 +43,7 @@ public class Randon_Bug : MonoBehaviour
     public void Ins_Bug()
     {
         
-        _iRandon_Bug = Random.Range(0, 2);
+        _iRandon_Bug = Random.Range(0, 3);
         Instantiate(_gBug[_iRandon_Bug], _gBug_Point.transform.position, _gBug[_iRandon_Bug].transform.rotation,_gBug_Area.transform);
     }
 

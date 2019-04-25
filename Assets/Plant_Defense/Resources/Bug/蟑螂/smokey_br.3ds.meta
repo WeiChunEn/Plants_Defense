@@ -1,0 +1,127 @@
+fileFormatVersion: 2
+guid: 75f73eb3a972b59468898d5d09fabfdd
+timeCreated: 1556171716
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: ground_plane
+    100002: lamp.L
+    100004: lamp.R
+    100006: lamp_main
+    100008: //RootNode
+    100010: smokey_brown
+    100012: wings
+    400000: ground_plane
+    400002: lamp.L
+    400004: lamp.R
+    400006: lamp_main
+    400008: //RootNode
+    400010: smokey_brown
+    400012: wings
+    2100000: wings
+    2100002: Material.003
+    2100004: smokey_br
+    2100006: Material.002
+    2100008: ground_plane
+    2100010: smokey_br_sp
+    2100012: smokey_br_he
+    2100014: Material
+    2300000: ground_plane
+    2300002: lamp.L
+    2300004: lamp.R
+    2300006: lamp_main
+    2300008: smokey_brown
+    2300010: wings
+    3300000: ground_plane
+    3300002: lamp.L
+    3300004: lamp.R
+    3300006: lamp_main
+    3300008: smokey_brown
+    3300010: wings
+    4300000: lamp_main
+    4300002: lamp.R
+    4300004: lamp.L
+    4300006: ground_plane
+    4300008: wings
+    4300010: smokey_brown
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

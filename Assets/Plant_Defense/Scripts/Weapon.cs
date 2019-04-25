@@ -7,6 +7,7 @@ using Valve.VR;
 public class Weapon : MonoBehaviour
 {
     public GameObject _gAmmo;
+    public GameObject _gFire_Space;
     public int _iDamage;
     public float _fRange;
     public float _fFireRate;
@@ -28,7 +29,7 @@ public class Weapon : MonoBehaviour
         transform.localRotation = Quaternion.identity;
         _iDamage = 10;
         _fRange = 100f;
-        _fFireRate = 0.2f;
+        _fFireRate = 0.1f;
         _iMaxAmmo = 20;
         _fReloadTime = 3f;
         _bIsReloading = false;
@@ -64,6 +65,7 @@ public class Weapon : MonoBehaviour
     public void Shoot()
     {
         Instantiate(_gAmmo, _tFire_Pos.position, _tFire_Pos.transform.rotation);
+        Instantiate(_gFire_Space, _tFire_Pos.position, _tFire_Pos.transform.rotation);
     }
 
     void SetLaserDotPosition(RaycastHit hit)

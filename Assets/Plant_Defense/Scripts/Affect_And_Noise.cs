@@ -8,7 +8,21 @@ public class Affect_And_Noise : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        Invoke("Destroy_it", 1.0f);
+        switch(gameObject.tag)
+        {
+            case "Affect":
+                Invoke("Destroy_it", 1.0f);
+                break;
+            case "Fire_Space":
+                Invoke("Destroy_it", 0.1f);
+                break;
+            case "Audio":
+                break;
+
+        }
+        
+        
+        
 
     }
 	
