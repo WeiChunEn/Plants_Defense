@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
 {
     public GameObject _gAmmo;
     public GameObject _gFire_Space;
+    public GameObject _gShoot_Music;
     public int _iDamage;
     public float _fRange;
     public float _fFireRate;
@@ -46,7 +47,7 @@ public class Weapon : MonoBehaviour
         _wLaser.transform.position = _tFire_Pos.position;
         _wLaser.transform.rotation = _tFire_Pos.rotation;
 
-        if (_TriggerInput.GetStateDown(_InputSource) && Time.time > _fNext_Fire)
+        if (_TriggerInput.GetState(_InputSource) && Time.time > _fNext_Fire)
         {
             _fNext_Fire = Time.time + _fFireRate;
             Shoot();
@@ -66,6 +67,7 @@ public class Weapon : MonoBehaviour
     {
         Instantiate(_gAmmo, _tFire_Pos.position, _tFire_Pos.transform.rotation);
         Instantiate(_gFire_Space, _tFire_Pos.position, _tFire_Pos.transform.rotation);
+        Instantiate(_gShoot_Music, _tFire_Pos.position, _tFire_Pos.transform.rotation);
     }
 
     void SetLaserDotPosition(RaycastHit hit)

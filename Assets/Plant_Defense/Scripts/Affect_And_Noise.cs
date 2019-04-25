@@ -16,7 +16,8 @@ public class Affect_And_Noise : MonoBehaviour
             case "Fire_Space":
                 Invoke("Destroy_it", 0.1f);
                 break;
-            case "Audio":
+            case "Music":
+                Invoke("Destroy_it", 1.5f);
                 break;
 
         }

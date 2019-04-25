@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(NavMeshAgent))]
 
@@ -18,6 +19,11 @@ public class Bug : MonoBehaviour
     public Slider _sBug_HP;
     public GameObject _gPlayer;
     public GameObject _gTarget;
+
+    public GameObject _gDead_Audio;
+    public GameObject _gGameMangaer;
+    
+    
 
     public class Bug_Data
     {
@@ -98,6 +104,7 @@ public class Bug : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         _gPlayer = GameObject.Find("Player");
         _gTarget = GameObject.Find("Player");
+        _gGameMangaer = GameObject.Find("GameManager");
        
     }
 
@@ -130,24 +137,24 @@ public class Bug : MonoBehaviour
             case "Bee(Clone)":
                 
                 _sBug_Name = "Bee";
-                _iBug_HP = 50;
-                _fBug_Speed = 5.0f;
+                _iBug_HP = 30;
+                _fBug_Speed = 4.0f;
                 navMeshAgent.speed = _fBug_Speed;
                 _iBug_Money = 5;
                 Insect = new Set_Bug(_sBug_Name, _iBug_HP, _fBug_Speed, _iBug_Money);
                 break;
             case "Ant(Clone)":
                 _sBug_Name = "Ant";
-                _iBug_HP = 30;
-                _fBug_Speed = 3.0f;
+                _iBug_HP = 20;
+                _fBug_Speed = 2.0f;
                 navMeshAgent.speed = _fBug_Speed;
                 _iBug_Money = 3;
                 Insect = new Set_Bug(_sBug_Name, _iBug_HP, _fBug_Speed, _iBug_Money);
                 break;
             case "Smokey(Clone)":
                 _sBug_Name = "Smokey";
-                _iBug_HP = 80;
-                _fBug_Speed = 10.0f;
+                _iBug_HP = 50;
+                _fBug_Speed = 7.0f;
                 navMeshAgent.speed = _fBug_Speed;
                 _iBug_Money = 10;
                 Insect = new Set_Bug(_sBug_Name, _iBug_HP, _fBug_Speed, _iBug_Money);
@@ -163,15 +170,19 @@ public class Bug : MonoBehaviour
         Insect.Bug_HP -= _iDamage;
         if(Insect.Bug_HP<=0)
         {
+            Instantiate(_gDead_Audio, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
+            
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.name == "Damage_Area")
         {
-            _gPlayer.transform.GetChild(0).GetComponent<CameraShake>().shakeDuration = 0.5f;
+            _gPlayer.GetComponent<CameraShake>().shakeDuration = 0.5f;
+            _gGameMangaer.GetComponent<GameManager>()._fPlayer_HP -= 10;
             Destroy(gameObject);
+            
         }
 
         if(other.name == "Player_Area")

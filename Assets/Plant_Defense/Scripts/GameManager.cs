@@ -21,9 +21,13 @@ public class GameManager : MonoBehaviour
     public bool _bStart_Game;
 
     public float _fGame_Time;
+    public float _fPlayer_HP;
 
     public GameObject _gPlayer;
+    public GameObject _gStart_Area;
+    public Animator _aStart_UI;
     public GameObject _gEnd_Area;
+    public GameObject _gBug_Area;
 
     public Transform m_LogoCamera;
     public Transform m_LogoScene;
@@ -31,6 +35,10 @@ public class GameManager : MonoBehaviour
     public CanvasGroup m_LogoUI;
 
     public GameObject _gGame_Camera;
+
+    public Image _iTime;
+    public Image _iHP;
+
     
 
     protected float m_Alpha = 1.0f;
@@ -44,12 +52,16 @@ public class GameManager : MonoBehaviour
         _eGame_State = Game_State.Start;
         _bStart_Game = false;
         _fGame_Time = 90.0f;
+        _fPlayer_HP = 100.0f;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        
+        if(_fPlayer_HP <= 0 || _fGame_Time <=0)
+        {
+            _eGame_State = Game_State.End;
+        }
 
         switch(_eGame_State)
         {
@@ -59,6 +71,7 @@ public class GameManager : MonoBehaviour
                     //_gGame_Camera.SetActive(true);
                    // m_LogoCamera.position = _gGame_Camera.transform.position;
                     m_LogoCamera.gameObject.GetComponent<Camera>().cullingMask = -1;
+                    _aStart_UI.SetTrigger("Open");
                     Start_Loading();
                    
                 }
@@ -76,11 +89,18 @@ public class GameManager : MonoBehaviour
                     m_LogoUI.alpha = m_Alpha;
                 }
                 break;
+            case Game_State.End:
+                _gEnd_Area.SetActive(true);
+                _gGame_Camera.SetActive(false);
+                _gBug_Area.SetActive(false);
+                break;
                 
         }
         if (_bStart_Game == true && _eGame_State == Game_State.Game)
         {
             _fGame_Time -= Time.deltaTime;
+            _iTime.fillAmount = _fGame_Time/90;
+            _iHP.fillAmount = _fPlayer_HP / 100;
         }
         //if(_gPlayer.GetComponent<Player>()._iPlayer_HP <= 0)
         //{
@@ -98,7 +118,8 @@ public class GameManager : MonoBehaviour
         _eGame_State = Game_State.Game;
         _bStart_Game = true;
         _gGame_Camera.SetActive(true);
-        _gEnd_Area.SetActive(false);
+        _gStart_Area.SetActive(false);
+        gameObject.GetComponent<AudioSource>().Play();
 
     }
 }
