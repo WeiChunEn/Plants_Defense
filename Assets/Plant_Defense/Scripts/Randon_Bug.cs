@@ -10,7 +10,7 @@ public class Randon_Bug : MonoBehaviour
    
     public GameObject _gBug_Area;
 
-    
+    public GameObject _gGameManager;
    
     public int _iRandon_Bug;
     
@@ -25,19 +25,23 @@ public class Randon_Bug : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        _gGameManager = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
     void Update()
     {
-        _fStart_Time += Time.deltaTime;
-        if (_fStart_Time >= _fRandom_Time)
+        if(_gGameManager.GetComponent<GameManager>()._bStart_Game == true)
         {
-            _fStart_Time = 0.0f;
-            Ins_Bug();
-            
+            _fStart_Time += Time.deltaTime;
+            if (_fStart_Time >= _fRandom_Time)
+            {
+                _fStart_Time = 0.0f;
+                Ins_Bug();
+
+            }
         }
+        
     }
 
     public void Ins_Bug()
