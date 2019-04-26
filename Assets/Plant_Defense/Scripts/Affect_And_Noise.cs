@@ -19,6 +19,9 @@ public class Affect_And_Noise : MonoBehaviour
             case "Music":
                 Invoke("Destroy_it", 1.5f);
                 break;
+            case "Hit_Death":
+                Invoke("Destroy_it", 3.0f);
+                break;
 
         }
         

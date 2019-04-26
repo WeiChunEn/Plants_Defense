@@ -22,6 +22,10 @@ public class Bug : MonoBehaviour
 
     public GameObject _gDead_Audio;
     public GameObject _gGameMangaer;
+
+    public GameObject _gHit_Player;
+    public GameObject _gHit_Audio;
+    public GameObject _gDeat_Affect;
     
     
 
@@ -171,6 +175,7 @@ public class Bug : MonoBehaviour
         if(Insect.Bug_HP<=0)
         {
             Instantiate(_gDead_Audio, gameObject.transform.position, gameObject.transform.rotation);
+            Instantiate(_gDeat_Affect, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
             
         }
@@ -181,6 +186,8 @@ public class Bug : MonoBehaviour
         {
             _gPlayer.GetComponent<CameraShake>().shakeDuration = 0.5f;
             _gGameMangaer.GetComponent<GameManager>()._fPlayer_HP -= 10;
+            Instantiate(_gHit_Audio, gameObject.transform.position, gameObject.transform.rotation);
+            Instantiate(_gHit_Player, _gPlayer.transform.position, _gPlayer.transform.rotation);
             Destroy(gameObject);
             
         }

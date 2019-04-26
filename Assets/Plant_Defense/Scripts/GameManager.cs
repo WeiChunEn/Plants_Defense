@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using Valve.VR;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
     public CanvasGroup m_LogoUI;
 
     public GameObject _gGame_Camera;
+    public GameObject _gController;
 
     public Image _iTime;
     public Image _iHP;
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour
                    // m_LogoCamera.position = _gGame_Camera.transform.position;
                     m_LogoCamera.gameObject.GetComponent<Camera>().cullingMask = -1;
                     _aStart_UI.SetTrigger("Open");
+                    _gController.SetActive(false);
                     Start_Loading();
                    
                 }
@@ -92,8 +95,13 @@ public class GameManager : MonoBehaviour
             case Game_State.End:
                 _gEnd_Area.SetActive(true);
                 _gGame_Camera.SetActive(false);
+                _gController.SetActive(true);
                 _gBug_Area.SetActive(false);
-                break;
+                if (SteamVR_Actions.default_InteractUI.GetStateDown(SteamVR_Input_Sources.Any) || Input.GetKeyDown(KeyCode.F10))
+                {
+                    SceneManager.LoadScene(0);
+                }
+                    break;
                 
         }
         if (_bStart_Game == true && _eGame_State == Game_State.Game)
