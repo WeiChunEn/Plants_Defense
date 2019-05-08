@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         }
         _eGame_State = Game_State.Start;
         _bStart_Game = false;
-        _fGame_Time = 90.0f;
+        _fGame_Time = 60.0f;
         _fPlayer_HP = 100.0f;
 	}
 	
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
         if (_bStart_Game == true && _eGame_State == Game_State.Game)
         {
             _fGame_Time -= Time.deltaTime;
-            _iTime.fillAmount = _fGame_Time/90;
+            _iTime.fillAmount = _fGame_Time/60;
             _iHP.fillAmount = _fPlayer_HP / 100;
         }
         //if(_gPlayer.GetComponent<Player>()._iPlayer_HP <= 0)

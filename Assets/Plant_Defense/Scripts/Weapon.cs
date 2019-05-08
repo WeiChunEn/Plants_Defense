@@ -28,7 +28,7 @@ public class Weapon : MonoBehaviour
     {
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
-        _iDamage = 10;
+        _iDamage = 20;
         _fRange = 100f;
         _fFireRate = 0.1f;
         _iMaxAmmo = 20;
@@ -75,14 +75,14 @@ public class Weapon : MonoBehaviour
         if (hit.collider != null)
         {
             _wLaser.SetLength(Vector3.Distance(hit.point, _tFire_Pos.position));
-            _tLaserDot.gameObject.SetActive(true);
-            _tLaserDot.position = hit.point + hit.normal * 0.001f;
-            _tLaserDot.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);
+            //_tLaserDot.gameObject.SetActive(true);
+            //_tLaserDot.position = hit.point + hit.normal * 0.001f;
+            //_tLaserDot.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);
         }
         else
         {
             _wLaser.SetLength();
-            _tLaserDot.gameObject.SetActive(false);
+            //_tLaserDot.gameObject.SetActive(false);
         }
     }
 }

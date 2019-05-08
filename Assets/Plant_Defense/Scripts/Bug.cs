@@ -158,7 +158,7 @@ public class Bug : MonoBehaviour
             case "Smokey(Clone)":
                 _sBug_Name = "Smokey";
                 _iBug_HP = 50;
-                _fBug_Speed = 7.0f;
+                _fBug_Speed = 6.0f;
                 navMeshAgent.speed = _fBug_Speed;
                 _iBug_Money = 10;
                 Insect = new Set_Bug(_sBug_Name, _iBug_HP, _fBug_Speed, _iBug_Money);
